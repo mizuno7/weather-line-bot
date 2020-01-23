@@ -30,29 +30,29 @@ task :update_feed => :environment do
        "二日酔い大丈夫？",
        "早起きしてえらいね！",
        "いつもより起きるのちょっと遅いんじゃない？"].sample
-       word2 =
-       ["気をつけて行ってきてね(^^)",
-        "良い一日を過ごしてね(^^)",
-        "雨に負けずに今日も頑張ってね(^^)",
-        "今日も一日楽しんでいこうね(^^)",
-        "楽しいことがありますように(^^)"].sample
-     # 降水確率によってメッセージを変更する閾値の設定
-     mid_per = 50
-     if per06to12.to_i >= mid_per || per12to18.to_i >= mid_per || per18to24.to_i >= mid_per
-       word3 = "今日は雨が降りそうだから傘を忘れないでね！"
-     else
-       word3 = "今日は雨が降るかもしれないから折りたたみ傘があると安心だよ！"
-     end
-     # 発信するメッセージの設定
-     push =
-       "#{word1}\n#{word3}\n降水確率はこんな感じだよ。\n　  6〜12時　#{per06to12}％\n　12〜18時　 #{per12to18}％\n　18〜24時　#{per18to24}％\n#{word2}"
-     # メッセージの発信先idを配列で渡す必要があるため、userテーブルよりpluck関数を使ってidを配列で取得
-     user_ids = User.all.pluck(:line_id)
-     message = {
-       type: 'text',
-       text: push
-     }
-     response = client.multicast(user_ids, message)
-   end
-   "OK"
- end
+    word2 =
+      ["気をつけて行ってきてね(^^)",
+      "良い一日を過ごしてね(^^)",
+      "雨に負けずに今日も頑張ってね(^^)",
+      "今日も一日楽しんでいこうね(^^)",
+      "楽しいことがありますように(^^)"].sample
+    # 降水確率によってメッセージを変更する閾値の設定
+    mid_per = 50
+    if per06to12.to_i >= mid_per || per12to18.to_i >= mid_per || per18to24.to_i >= mid_per
+      word3 = "今日は雨が降りそうだから傘を忘れないでね！"
+    else
+      word3 = "今日は雨が降るかもしれないから折りたたみ傘があると安心だよ！"
+    end
+    # 発信するメッセージの設定
+    push =
+      "#{word1}\n#{word3}\n降水確率はこんな感じだよ。\n　  6〜12時　#{per06to12}％\n　12〜18時　 #{per12to18}％\n　18〜24時　#{per18to24}％\n#{word2}"
+    # メッセージの発信先idを配列で渡す必要があるため、userテーブルよりpluck関数を使ってidを配列で取得
+    user_ids = User.all.pluck(:line_id)
+    message = {
+      type: 'text',
+      text: push
+    }
+    response = client.multicast(user_ids, message)
+  end
+  "OK"
+end
