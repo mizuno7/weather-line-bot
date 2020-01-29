@@ -1,17 +1,21 @@
-ToDo Task
+傘通知bot
 ====
 
 Overview
 
 ## Description
-CRUD機能のToDo管理アプリです。
-見た目はシンプルにBootstrapを使用しています。
+降水確率50%を超える時間帯がある場合、傘を持っていくことを通知するlinebotです
+(傘が必要な場合のみ朝に通知が来ます)。
 
-![画像名](screencapture-todo-task-taisuke-herokuapp-2020-01-29-13_39_01.jpg)
-![画像名](https://github.com/mizuno7/todo-task/blob/master/screencapture-todo-task-taisuke-herokuapp-tasks-5-2020-01-29-13_40_33.jpg)
+気象庁のデータをメタデータ化した情報を使用し、東京の天気情報を取得しています。
+その他色々なコメントに対して反応します。
+
+<img src="12912_1.jpg" width="320px">
+<img src="12911.jpg" width="320px">
+
 
 
 
 ## Usage
 
-[リンク](https://todo-task-taisuke.herokuapp.com/)
+[リンク](https://line.me/R/ti/p/%40753ptrfv)
